@@ -115,7 +115,7 @@ export default function CharacterManagement() {
                     component="img"
                     src={`images/${character.race}.jpg`}
                     // alt="green iguana"
-                    alt={`/images/${character.race},jpg`}
+                    alt="portrait du personnage"
                     height="200px"
                   />
                   <CardContent>

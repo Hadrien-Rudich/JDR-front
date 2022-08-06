@@ -465,25 +465,118 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         character: {
           ...state.character,
-          view: action.response,
-          selectedCharacter: {
-            selectedCharacterName: action.response.name,
-            selectedCharacterClass: action.response.class.name,
-            proficiencies: action.response.class.proficiencies,
-            features: action.response.class.features,
-            selectedCharacterRace: action.response.race.name,
-            langue: action.response.race.language,
-            abilityRace: action.response.race.racial_ability,
-            selectedCharacterBackground: action.response.background.name,
-            abilityBackground: action.response.background.ability,
-            abilityBackgroundDescription: action.response.background.ability_description,
-            selectedCharacterSkills: action.response.background.skill,
-            selectedStrenght: action.response.ability_score.force,
-            selectedDexterity: action.response.ability_score.dextérité,
-            selectedConstitution: action.response.ability_score.constitution,
-            selectedWisdom: action.response.ability_score.sagesse,
-            selectedIntelligence: action.response.ability_score.intélligence,
-            selectedCharisma: action.response.ability_score.charisme,
+          // view: action.response,
+
+          fetchedCharacter: {
+            ability_score: {
+              charisma: action.response.ability_score.charisme,
+              constitution: action.response.ability_score.constitution,
+              dexterity: action.response.ability_score.dextérité,
+              strength: action.response.ability_score.force,
+              intelligence: action.response.ability_score.intélligence,
+              wisdom: action.response.ability_score.sagesse,
+            },
+
+            background: {
+              ability: action.response.background.ability,
+              abilityDescription: action.response.background.ability_description,
+              additionalLanguage: action.response.background.additional_language,
+              name: action.response.background.name,
+              skill: {
+                zero: action.response.background.skill[0],
+                one: action.response.background.skill[1],
+              },
+            },
+
+            class: {
+              features: {
+                zero: {
+                  choice: {
+                    zero: {
+                      description: action.response.class.features[0].choice[0].description,
+                      name: action.response.class.features[0].choice[0].name,
+                    },
+                  },
+                  description: action.response.class.features[0].description,
+                  name: action.response.class.features[0].name,
+                },
+                one: {
+                  choice: {
+                    zero: {
+                      description: action.response.class.features[1].choice[0].description,
+                      name: action.response.class.features[1].choice[0].name,
+                    },
+                  },
+                  description: action.response.class.features[1].description,
+                  name: action.response.class.features[1].name,
+                },
+              },
+            },
+            name: action.response.class.name,
+            proficiencies: {
+              zero: {
+                savingThrows: {
+                  zero: action.response.class.proficiencies[0].saving_throws[0],
+                  one: action.response.class.proficiencies[0].saving_throws[1],
+                },
+                skills: {
+                  zero: {
+                    name: action.response.class.proficiencies[0].skills[0].name,
+                  },
+                  one: {
+                    name: action.response.class.proficiencies[0].skills[1].name,
+                  },
+                },
+              },
+            },
+         
+
+            // eslint-disable-next-line no-dupe-keys
+            name: action.response.name,
+
+            race: {
+              extraLanguage: action.response.race.extra_language,
+              language: {
+                zero: action.response.race.language[0],
+              },
+              name: action.response.race.name,
+              nightVision: action.response.race.night_vision,
+              racialAbility: {
+                zero: {
+                  description: action.response.race.racial_ability[0].description,
+                  name: action.response.race.racial_ability[0].racial_ability_name,
+                },
+              },
+              scoreModifier: {
+                zero: {
+                  name: action.response.race.score_modifier[0].score_name,
+                  number: action.response.race.score_modifier[0].score_number,
+                },
+                one: {
+                  name: action.response.race.score_modifier[1].score_name,
+                  number: action.response.race.score_modifier[1].score_number,
+                },
+                two: {
+                  name: action.response.race.score_modifier[2].score_name,
+                  number: action.response.race.score_modifier[2].score_number,
+                },
+                three: {
+                  name: action.response.race.score_modifier[3].score_name,
+                  number: action.response.race.score_modifier[3].score_number,
+                },
+                four: {
+                  name: action.response.race.score_modifier[4].score_name,
+                  number: action.response.race.score_modifier[4].score_number,
+                },
+                five: {
+                  name: action.response.race.score_modifier[5].score_name,
+                  number: action.response.race.score_modifier[5].score_number,
+                },
+              },
+              speed: action.response.race.speed,
+
+            },
+
           },
         },
       };
