@@ -49,28 +49,28 @@ export default function CharacterCreation() {
   ];
 
   return (
-    <Box sx={{ width: '100%', typography: 'body1' }}>
-      <TabContext value={value}>
+    <Box>
+      <TabContext value={value} sx={{width: '100vw'}}>
         <Box sx={{ borderBottom: 1, borderColor: 'secondary.main' }}>
           <TabList
             centered
-            fixed
+            // fixed
             sx={{
               color: 'secondary',
-              display: 'flex',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-              width: '100vw',
+              // display: 'flex',
+              // justifyContent: 'center',
+              // flexWrap: 'wrap',
+              // width: '100vw',
             }}
             onChange={handleChange}
-            aria-label="character creation tabs"
+            // aria-label="character creation tabs"
           >
 
             {tabsList.map((tab) => (
 
               <NavLink key={tab.label} to={`/creation${tab.url}`}>
                 <Tab
-                  sx={{ fontWeight: 'bold', fontStyle: 'italic', fontFamily: 'monospace' }}
+                  // sx={{ fontWeight: 'bold', fontStyle: 'italic', fontFamily: 'monospace' }}
                   label={`${tab.label}`}
                   value={`${tab.value}`}
                 />
